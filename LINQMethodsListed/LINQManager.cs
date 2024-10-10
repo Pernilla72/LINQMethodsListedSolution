@@ -4,38 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// Ansvarar för (Managerar) alla metodanrop, medans metoderna ligger i LINQOperationsMethods
+///
 namespace LINQMethodsListed
 {
     public class LINQManager
     {
         //Alla kända LINQ-mtoder testas nedan: 
         ///Filtering Methods:
-        //1. `Where`
-        static IEnumerable<Person> WhereMethod(IEnumerable<Person> people)
+        //1. `Where`  alla personer över 30 år
+        public static void RunWhere(IEnumerable<Person> people)
         {
-            return people.Where(p => p.Age > 30);
+            Console.WriteLine("Alla personer över 30 år");
+            people
+            .Where(p => p.Age > 30)
+            .ToList()
+            .ForEach(person => Console.WriteLine($"{person.FirstName} {person.LastName}, Age: {person.Age}"));
+            Console.WriteLine("-------------------------");
         }
-
-        //2. `Distinct`
-
-        //3. `DistinctBy` (nyare)
-
-        //4. `Except`
-
-        //5. `ExceptBy` (nyare)
-
-        //6. `Intersect`
-
-        //7. `IntersectBy` (nyare)
-
-        //8. `Skip`
-
-        //9. `SkipWhile`
-
-        //10. `Take`
-
-        //11. `TakeWhile`
-
-        //12. `OfType`
+        //2. `Take`  de första 5 personerna i listan.
+        public static void RunTake(IEnumerable<Person> people)
+        {
+            Console.WriteLine("Första 5 personerna i listan");
+            people.Take(5)
+                .ToList()
+                .ForEach(person => Console.WriteLine($"{person.FirstName} {person.LastName}"));
+            Console.WriteLine("-------------------------");
+        }
     }
 }

@@ -1,4 +1,7 @@
 ﻿using System.Linq;
+using static LINQMethodsListed.LINQManager;
+using static LINQMethodsListed.LINQOperationsMethods;
+
 
 namespace LINQMethodsListed
 {
@@ -6,12 +9,19 @@ namespace LINQMethodsListed
     {
         static void Main(string[] args)
         {
+            List<Person> people = Data.GetPeople();
 
-            var people = Data.GetPeople();
+            LINQManager.RunWhere(people);
+            //LINQManager.RunSelect(people);  
+            LINQManager.RunTake(people);
+            //LINQManager.RunOrderBy(people);
+            //LINQManager.RunUnion(people);
+            //LINQManager.RunFirstOrDefault(people);
+            //LINQManager.RunSingle(people);
+            //LINQManager.RunSelectMany(people);
 
-            WhereMethod();
             
+            Console.WriteLine("Programmet har avslutats.");
         }
-
     }
 }
